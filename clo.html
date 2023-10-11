@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>AI工具萬用箱</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+      canvas {
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper">
+      <header id="header">
+        <div class="inner">
+          <a href="index.html" class="logo">
+            <span class="symbol"> <img src="images/logo.png" style="width: auto; height: auto;"></span>
+          </a>
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="ChatGPT.html">ChatGPT</a></li>
+          <li><a href="Tome.html">Tome</a></li>
+          <li><a href="ChatPDF.html">ChatPDF</a></li>
+          <li><a href="ChatGPT Prompt Genius.html">ChatGPT Prompt Genius</a></li>
+          <li><a href="WebChatGPT.html">WebChatGPT</a></li>
+          <li><a href="ChatGPT for YouTube.html">ChatGPT for YouTube</a></li>
+          <li><a href="Microsoft Bing影像建立.html">Microsoft Bing影像建立</a></li>
+          <li><a href="ChatGPT Writer.html">ChatGPT Writer</a></li>
+          <li><a href="ERP AI.txt">ERP的AI革命企業效能的革新</a></li>
+        </ul>
+      </nav>
+      <div id="main">
+        <div class="inner">
+          <canvas id="drawingCanvas" width="800" height="400"></canvas>
+          <div>
+            <label for="color">选择颜色：</label>
+            <input type="color" id="color" value="#000000">
+            <label for="thickness">选择粗度：</label>
+            <input type="range" id="thickness" min="1" max="10" value="2">
+            <button id="clear">清除</button>
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Get in touch</h2>
+            <form
+              method="post"
+              action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfkMDVRLduXpzPBqN7qHFoPJuRMyVPqR3bZ58jvMF988f27Nw/formResponse"
+              target="_blank"
+            >
+              <div class="fields">
+                <div class="field half">
+                  <input type="text" name="entry.1300613214" id="name" placeholder="Name" />
+                </div>
+                <div class="field half">
+                  <input type="email" name="entry.666121094" id="email" placeholder="Email" />
+                </div>
+                <div class="field">
+                  <textarea name="entry.865282636" id="message" placeholder="Message"></textarea>
+                </div>
+              </div>
+              <ul class="actions">
+                <li><input type="submit" value="Send" class="primary" /></li>
+              </ul>
+            </form>
+          </section>
+          <ul class="copyright">
+            <li>&copy; Copyright © 2023 AI工具萬用箱. 版權所有。</li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const canvas = document.getElementById('drawingCanvas');
+      const context = canvas.getContext('2d');
+      const colorInput = document.getElementById('color');
+      const thicknessInput = document.getElementById('thickness');
+      const clearButton = document.getElementById('clear');
+      let drawing = false;
+
+      canvas.addEventListener('mousedown', () => {
+        drawing = true;
+        context.beginPath();
+      });
+
+      canvas.addEventListener('mouseup', () => {
+        drawing = false;
+        context.closePath();
+      });
+
+      canvas.addEventListener('mousemove', draw);
+
+      colorInput.addEventListener('input', () => {
+        context.strokeStyle = colorInput.value;
+      });
+
+      thicknessInput.addEventListener('input', () => {
+        context.lineWidth = thicknessInput.value;
+      });
+
+      clearButton.addEventListener('click', () => {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      });
+
+      function draw(e) {
+        if (!drawing) return;
+
+        context.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        context.stroke();
+      }
+    </script>
+  </body>
+</html>
