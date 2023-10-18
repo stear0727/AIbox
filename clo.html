@@ -84,44 +84,6 @@
         </div>
       </footer>
     </div>
-    <script>
-      const canvas = document.getElementById('drawingCanvas');
-      const context = canvas.getContext('2d');
-      const colorInput = document.getElementById('color');
-      const thicknessInput = document.getElementById('thickness');
-      const clearButton = document.getElementById('clear');
-      let drawing = false;
-
-      canvas.addEventListener('mousedown', () => {
-        drawing = true;
-        context.beginPath();
-      });
-
-      canvas.addEventListener('mouseup', () => {
-        drawing = false;
-        context.closePath();
-      });
-
-      canvas.addEventListener('mousemove', draw);
-
-      colorInput.addEventListener('input', () => {
-        context.strokeStyle = colorInput.value;
-      });
-
-      thicknessInput.addEventListener('input', () => {
-        context.lineWidth = thicknessInput.value;
-      });
-
-      clearButton.addEventListener('click', () => {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-      });
-
-      function draw(e) {
-        if (!drawing) return;
-
-        context.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-        context.stroke();
-      }
-    </script>
+    
   </body>
 </html>
